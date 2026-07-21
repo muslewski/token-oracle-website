@@ -1,29 +1,50 @@
-# token-oracle website
+<p align="center">
+  <picture>
+    <source srcset="public/oracle-banner.avif" type="image/avif">
+    <img src="public/oracle-banner.webp" alt="token-oracle — know when you'll hit the limit" width="1000" />
+  </picture>
+</p>
 
-Public marketing one-pager for **[token-oracle](https://github.com/muslewski/token-oracle)**.
+<p align="center">
+  <a href="https://oracle.muslewski.com"><img src="https://img.shields.io/badge/website-oracle.muslewski.com-9d4edd?style=for-the-badge" alt="Website"></a>
+  <a href="https://github.com/muslewski/token-oracle"><img src="https://img.shields.io/badge/product-token--oracle-0c0718?style=for-the-badge" alt="Product"></a>
+</p>
 
-- **Live:** https://oracle.muslewski.com
-- **Stack:** Vite static site (Round 7 — responsive + fast media)
-- **Product repo:** https://github.com/muslewski/token-oracle
+<p align="center">
+  <img src="public/demo-dash.gif" width="720" alt="oracle dash demo" />
+</p>
+
+# token-oracle — marketing website
+
+Public one-pager for **[token-oracle](https://github.com/muslewski/token-oracle)** — offline rate & cap forecast from local logs.
+
+**Live → [oracle.muslewski.com](https://oracle.muslewski.com)**
+
+> **Looking for the tool?** Install, CLI, and statusline docs:  
+> **https://github.com/muslewski/token-oracle**
+
+## Brand
+
+Purple shrine · aurora crystal · hourglass · *know when you'll hit the limit*.
+
+| Asset | Role |
+|-------|------|
+| `public/oracle-banner.webp` | Brand banner |
+| `public/banner-adapters-oracle.webp` | Multi-harness adapters |
+| `public/demo-dash.gif` / `demo-forecast.gif` | Product motion |
+| `public/video/v01.mp4` | Crystal beam loop |
 
 ## Develop
 
 ```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
+npm install && npm run dev
 npm run build
-npm run preview
 ```
 
 ## Deploy
 
-Vercel project linked to this repo. Production domain: `oracle.muslewski.com`.
+Vercel · production domain **oracle.muslewski.com**
 
 ## License
 
-MIT (same family as the product tool). Site content and brand art © Mateusz Muslewski / muslewski.
+MIT-family marketing site. Brand art © Mateusz Muslewski.
