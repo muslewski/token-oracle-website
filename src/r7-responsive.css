@@ -1,0 +1,213 @@
+/* Round 7 — shared responsive + performance layer
+   Appended/imported by each R7 site. Mobile-first fixes + content-visibility. */
+
+/* —— Base speed —— */
+html {
+  overflow-x: clip;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overflow-x: clip;
+  min-height: 100%;
+  min-height: 100dvh;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+img {
+  content-visibility: auto;
+}
+/* Sections offscreen skip layout/paint work */
+section.sec,
+section.section,
+.section,
+.sec {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 640px;
+}
+/* Hero stays eager */
+.hero,
+section.hero,
+.hero-on-film,
+.hero-bleed {
+  content-visibility: visible;
+  contain-intrinsic-size: auto;
+}
+
+/* —— Touch targets —— */
+@media (pointer: coarse) {
+  .btn,
+  .btn-gold,
+  .btn-primary,
+  .btn-bio,
+  .nav-cta,
+  .copy-block,
+  .cmd button,
+  .cmd-row button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* —— Safe area (notched phones) —— */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+  .nav,
+  .site-header,
+  header {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
+/* —— Video —— */
+video {
+  background: #0a0a0a;
+}
+.vid-frame video,
+.vid-plate video {
+  min-height: 0 !important;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.vid-frame.square video,
+.vid-plate.square video {
+  aspect-ratio: 1;
+}
+
+/* —— Reveal: cheap —— */
+.reveal {
+  transform: translate3d(0, 8px, 0);
+  backface-visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* —— Mobile layout kill-switches —— */
+@media (max-width: 720px) {
+  .wrap {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 8.5vw, 2.4rem) !important;
+    line-height: 1.12 !important;
+  }
+  h2 {
+    font-size: clamp(1.35rem, 6vw, 1.75rem) !important;
+  }
+  /* grids → single column */
+  .hero-grid,
+  .grid-2,
+  .grid-3,
+  .two,
+  .sol-grid,
+  .pillar-grid,
+  .pillars,
+  .cards,
+  .problem-grid,
+  .demo-split,
+  .feature-split,
+  .seal-grid,
+  .station {
+    grid-template-columns: 1fr !important;
+  }
+  .station {
+    padding-left: 2.25rem !important;
+  }
+  /* nav: collapse secondary links */
+  .nav-links a:not(.nav-cta) {
+    font-size: 0.8rem;
+  }
+  /* bleed video height */
+  .vid-frame.bleed video,
+  .vid-frame.tall video {
+    height: min(42vh, 320px) !important;
+    max-height: 320px !important;
+  }
+  /* herald wordmark */
+  .wordmark {
+    font-size: clamp(2.4rem, 16vw, 3.6rem) !important;
+  }
+  .main-pad {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  /* curtains thinner residual on small screens — more stage */
+  body.curtains-open .curtain.panel.left {
+    transform: translateX(-90%) !important;
+  }
+  body.curtains-open .curtain.panel.right {
+    transform: translateX(90%) !important;
+  }
+  /* armory header */
+  .logo-sub {
+    display: none;
+  }
+  .nav a:not(.nav-cta) {
+    display: none;
+  }
+  .hero {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .section,
+  .sec {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
+  }
+  /* companion / plates full width left */
+  .companion-vid,
+  .vid-plate {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* float card on film — smaller */
+  .hero-on-film .stage-plate .float-card {
+    width: min(92%, 260px) !important;
+    bottom: 6% !important;
+  }
+  .hero-on-film .bar-strip {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-on-film .tmux-bar {
+    font-size: 0.62rem !important;
+    gap: 0.4rem 0.55rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .states-row {
+    gap: 0.4rem !important;
+  }
+  .state {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.55rem !important;
+  }
+}
+
+/* —— Reduced data: hide decorative layers —— */
+@media (prefers-reduced-data: reduce) {
+  .abyss .trail,
+  .abyss .spore,
+  .bolt-grid,
+  .weld-glow,
+  .meander {
+    display: none !important;
+  }
+}
