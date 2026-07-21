@@ -45,8 +45,8 @@
       <p class="art-caption reveal">v01 · crystal beams · hero</p>
       <p class="lede reveal">Aurora DNA with a living crystal. Offline forecast from local logs — Claude and Grok trails, no cloud keys.</p>
       <div class="actions reveal">
+        <button type="button" class="copy-block" data-cmd="npx token-oracle dash" onclick="copyCmd(this)" tabindex="0" aria-label="Copy: npx token-oracle dash"><span class="copy-icon" aria-hidden="true">⎘</span><span class="c-prompt">$</span> <span class="c-cmd">npx token-oracle dash</span></button>
         <a class="btn primary" href="https://github.com/muslewski/token-oracle" target="_blank" rel="noopener">GitHub →</a>
-        <a class="btn ghost" href="#quickstart">Quickstart</a>
       </div>
       <div class="reveal" style="max-width:28rem;margin:1.25rem auto 0">
 <div class="ix-panel" id="scope-panel">
@@ -112,11 +112,130 @@
   <div class="wrap">
     <p class="sec-id reveal">04 · quickstart</p>
     <h2 class="reveal">Run the oracle</h2>
-    <div class="cmds reveal">
-      <div class="cmd"><code id="c1">uvx token-oracle dash</code><button type="button" data-copy="#c1">copy</button></div>
-      <div class="cmd"><code id="c2">token-oracle forecast</code><button type="button" data-copy="#c2">copy</button></div>
-      <div class="cmd"><code id="c3">oracle statusline --install</code><button type="button" data-copy="#c3">copy</button></div>
-      <div class="cmd"><code id="c4">token-oracle init</code><button type="button" data-copy="#c4">copy</button></div>
+    <p class="reveal" style="color:var(--mute,#a88bc8);max-width:48ch;margin:0 0 .5rem">npm, npx, uv, or pip — same offline forecast. Click to copy.</p>
+    <div class="install-term reveal">
+      <div class="install-term-bar">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="term-title">setup</span>
+      </div>
+      <div class="install-tabs" role="tablist" aria-label="Install method">
+        <button class="install-tab" id="oracle-tab-npm" role="tab" aria-selected="true" aria-controls="oracle-panel-npm" tabindex="0" type="button">npm</button><button class="install-tab" id="oracle-tab-npx" role="tab" aria-selected="false" aria-controls="oracle-panel-npx" tabindex="-1" type="button">npx</button><button class="install-tab" id="oracle-tab-uv" role="tab" aria-selected="false" aria-controls="oracle-panel-uv" tabindex="-1" type="button">uv</button><button class="install-tab" id="oracle-tab-pip" role="tab" aria-selected="false" aria-controls="oracle-panel-pip" tabindex="-1" type="button">pip</button>
+      </div>
+      <div class="install-term-body">
+        <div class="install-panel" id="oracle-panel-npm" role="tabpanel" aria-labelledby="oracle-tab-npm">
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="npm install -g token-oracle" role="button" tabindex="0" aria-label="Copy command: npm install -g token-oracle">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">npm install -g token-oracle</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#1</span> Node shim — bins: <code>token-oracle</code> · <code>oracle</code> (runs uvx/pipx under the hood)</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="token-oracle init" role="button" tabindex="0" aria-label="Copy command: token-oracle init">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">token-oracle init</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#2</span> Guided setup (or <code>--preset max20</code>)</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="token-oracle dash" role="button" tabindex="0" aria-label="Copy command: token-oracle dash">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">token-oracle dash</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#3</span> Full-screen past / present / future</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="token-oracle forecast" role="button" tabindex="0" aria-label="Copy command: token-oracle forecast">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">token-oracle forecast</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#4</span> Time left before your cap</div>
+          </div>
+        </div>
+        <div class="install-panel" id="oracle-panel-npx" role="tabpanel" aria-labelledby="oracle-tab-npx" hidden>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="npx token-oracle dash" role="button" tabindex="0" aria-label="Copy command: npx token-oracle dash">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">npx token-oracle dash</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#1</span> Instant — no global install</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="npx token-oracle forecast" role="button" tabindex="0" aria-label="Copy command: npx token-oracle forecast">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">npx token-oracle forecast</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#2</span> One-shot forecast</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="npx token-oracle init" role="button" tabindex="0" aria-label="Copy command: npx token-oracle init">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">npx token-oracle init</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#3</span> Configure profiles</div>
+          </div>
+        </div>
+        <div class="install-panel" id="oracle-panel-uv" role="tabpanel" aria-labelledby="oracle-tab-uv" hidden>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="uvx token-oracle dash" role="button" tabindex="0" aria-label="Copy command: uvx token-oracle dash">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">uvx token-oracle dash</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#1</span> Ephemeral Python runner (recommended pure path)</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="uv tool install token-oracle" role="button" tabindex="0" aria-label="Copy command: uv tool install token-oracle">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">uv tool install token-oracle</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#2</span> Install onto PATH via uv</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="token-oracle forecast" role="button" tabindex="0" aria-label="Copy command: token-oracle forecast">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">token-oracle forecast</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#3</span> Same CLI after install</div>
+          </div>
+        </div>
+        <div class="install-panel" id="oracle-panel-pip" role="tabpanel" aria-labelledby="oracle-tab-pip" hidden>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="pipx install token-oracle" role="button" tabindex="0" aria-label="Copy command: pipx install token-oracle">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">pipx install token-oracle</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#1</span> Isolated Python install</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="pip install token-oracle" role="button" tabindex="0" aria-label="Copy command: pip install token-oracle">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">pip install token-oracle</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#2</span> Into the current environment</div>
+          </div>
+          <div class="install-step">
+            <div class="cmd-row" onclick="copyCmd(this)" data-cmd="token-oracle doctor" role="button" tabindex="0" aria-label="Copy command: token-oracle doctor">
+              <span class="c-prompt">$</span>
+              <span class="c-cmd">token-oracle doctor</span>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+            </div>
+            <div class="install-hint"><span class="c-cmt">#3</span> Check config + data sources</div>
+          </div>
+        </div>
+        <div class="install-foot"><span class="ok">✓</span> Real tool is Python on PyPI — npm/npx is a thin launcher.</div>
+      </div>
     </div>
   </div>
 </section>

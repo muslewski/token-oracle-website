@@ -1,0 +1,182 @@
+/* SAGE-style install terminal — theme via --install-* vars on .install-term or :root */
+.install-term {
+  --it-bg: var(--install-bg, #0e0c0a);
+  --it-border: var(--install-border, #2a241c);
+  --it-bar: var(--install-bar, #16140f);
+  --it-text: var(--install-text, #efe7d8);
+  --it-muted: var(--install-muted, #5a5248);
+  --it-accent: var(--install-accent, #6b7a3a);
+  --it-cmd: var(--install-cmd, #efe7d8);
+  --it-prompt: var(--install-prompt, #c8972f);
+  --it-hover: var(--install-hover, rgba(200, 151, 47, 0.1));
+  --it-radius: var(--install-radius, 6px);
+  max-width: 560px;
+  margin-top: 1.25rem;
+  background: var(--it-bg);
+  border: 1px solid var(--it-border);
+  border-radius: var(--it-radius);
+  overflow: hidden;
+  font-family: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.install-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--it-bar);
+  border-bottom: 1px solid var(--it-border);
+}
+.install-term-bar .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.install-term-bar .dot-r { background: #e06c75; }
+.install-term-bar .dot-y { background: #e5c07b; }
+.install-term-bar .dot-g { background: #98c379; }
+.install-term-bar .term-title {
+  margin-left: 8px;
+  font-size: 11px;
+  color: var(--it-muted);
+  letter-spacing: 0.06em;
+}
+.install-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px 0;
+  border-bottom: 1px solid var(--it-border);
+  background: var(--it-bg);
+}
+.install-tab {
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--it-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.install-tab:hover { color: var(--it-text); }
+.install-tab[aria-selected="true"] {
+  color: var(--it-text);
+  border-bottom-color: var(--it-accent);
+}
+.install-tab:focus-visible {
+  outline: 1px solid var(--it-accent);
+  outline-offset: 2px;
+}
+.install-term-body {
+  padding: 14px 16px 16px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--it-text);
+}
+.install-panel[hidden] { display: none !important; }
+.install-step { margin-bottom: 14px; }
+.install-step:last-child { margin-bottom: 0; }
+.cmd-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  transition: background 0.15s ease;
+  color: var(--it-cmd);
+  text-align: left;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font: inherit;
+}
+.cmd-row:hover,
+.cmd-row:focus-visible {
+  background: var(--it-hover);
+  outline: none;
+}
+.cmd-row.copied { outline: 1px solid var(--it-accent); }
+.cmd-row .c-prompt { color: var(--it-prompt); flex-shrink: 0; }
+.cmd-row .c-cmd { flex: 1; min-width: 0; word-break: break-word; white-space: normal; }
+.cmd-row .copy-icon {
+  color: var(--it-muted);
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.cmd-row.copied .copy-icon { color: var(--it-accent); }
+.install-hint {
+  font-size: 11px;
+  padding-left: 14px;
+  margin-top: 4px;
+  color: var(--it-muted);
+}
+.install-hint .c-cmt { color: var(--it-accent); margin-right: 4px; }
+.install-foot {
+  border-top: 1px solid var(--it-border);
+  padding-top: 12px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--it-muted);
+}
+.install-foot .ok { color: var(--it-accent); }
+
+/* Hero / inline copy chips */
+.copy-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: var(--it-radius, 4px);
+  border: 1px solid var(--it-border, currentColor);
+  background: var(--it-bg, transparent);
+  color: inherit;
+  transition: border-color 0.15s, color 0.15s;
+  text-align: left;
+  max-width: 100%;
+}
+.copy-block:hover,
+.copy-block:focus-visible {
+  border-color: var(--it-accent, currentColor);
+  outline: none;
+}
+.copy-block.copied { border-color: var(--it-accent); color: var(--it-accent); }
+.copy-block .copy-icon { opacity: 0.55; flex-shrink: 0; }
+.copy-block.copied .copy-icon { opacity: 1; color: var(--it-accent); }
+.copy-block .c-prompt { color: var(--it-prompt); }
+.copy-block .c-cmd { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+#copy-toast {
+  position: fixed;
+  z-index: 9999;
+  transform: translate(-50%, -100%) translateY(4px);
+  background: var(--install-accent, #6b7a3a);
+  color: #0e0d0c;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 5px 11px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+#copy-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -100%) translateY(-4px);
+}
+
+@media (max-width: 560px) {
+  .install-term { max-width: 100%; }
+  .cmd-row .c-cmd { font-size: 11.5px; }
+}
