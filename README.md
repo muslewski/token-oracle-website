@@ -48,3 +48,11 @@ Vercel · production domain **oracle.muslewski.com**
 ## License
 
 MIT-family marketing site. Brand art © Mateusz Muslewski.
+
+## Community
+
+Product support lives on **[token-oracle](https://github.com/muslewski/token-oracle)**:
+
+- [Discussions](https://github.com/muslewski/token-oracle/discussions) — questions & ideas
+- [Issues](https://github.com/muslewski/token-oracle/issues) — bugs & features
+- Website-only fixes — open an issue here
