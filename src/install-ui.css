@@ -1,5 +1,7 @@
-/* SAGE-style install terminal — theme via --install-* vars on .install-term or :root */
-.install-term {
+/* Install terminal + hero copy chips.
+   Theme per site via --install-* on :root (mapped to --it-* here).
+   Hero .copy-block sits outside .install-term — so tokens must be on :root. */
+:root {
   --it-bg: var(--install-bg, #0e0c0a);
   --it-border: var(--install-border, #2a241c);
   --it-bar: var(--install-bar, #16140f);
@@ -10,6 +12,8 @@
   --it-prompt: var(--install-prompt, #c8972f);
   --it-hover: var(--install-hover, rgba(200, 151, 47, 0.1));
   --it-radius: var(--install-radius, 6px);
+}
+.install-term {
   max-width: 560px;
   margin-top: 1.25rem;
   background: var(--it-bg);
