@@ -1,25 +1,48 @@
-/* Fleet docs shell — theme via --docs-* on :root (token-oracle brand) */
+/* token-oracle docs — purple shrine / aurora */
 :root {
   --docs-bg: #0c0718;
   --docs-fg: #f2ebff;
   --docs-body: #d4c8e8;
   --docs-muted: #6a5a80;
   --docs-muted-2: #a88bc8;
-  --docs-border: rgba(157,78,221,0.28);
+  --docs-border: rgba(157, 78, 221, 0.3);
   --docs-panel: #15102a;
+  --docs-aside-bg: #120c22;
+  --docs-top-bg: #0c0718;
   --docs-accent: #9d4edd;
   --docs-accent-2: #e0aaff;
   --docs-accent-dim: #7b2cbf;
-  --docs-accent-glow: rgba(157,78,221,0.35);
-  --docs-accent-soft: rgba(157,78,221,0.12);
+  --docs-accent-glow: rgba(157, 78, 221, 0.4);
+  --docs-accent-soft: rgba(157, 78, 221, 0.12);
   --docs-display: "Cinzel", Georgia, serif;
   --docs-body-font: "Source Sans 3", system-ui, sans-serif;
   --docs-mono: "JetBrains Mono", ui-monospace, monospace;
+  --docs-nav-font: "Source Sans 3", system-ui, sans-serif;
+  --docs-radius: 8px;
+  --docs-brand-size: 1.25rem;
+  --docs-brand-track: 0.06em;
+  --docs-h1: #f2ebff;
+  --docs-h1-shadow: 0 0 36px rgba(157, 78, 221, 0.3);
+  --docs-prose-size: 16px;
+  --docs-card-bg: #15102a;
+  --docs-card-border: 1px solid rgba(157, 78, 221, 0.35);
+  --docs-card-shadow: 0 0 30px rgba(157, 78, 221, 0.12);
+  --docs-term-bg: #10081c;
+  --docs-term-fg: #f2ebff;
+  --docs-term-border: 1px solid rgba(157, 78, 221, 0.4);
+  --docs-term-shadow: 0 0 24px rgba(157, 78, 221, 0.15);
+  --docs-term-pad: 1rem 1.15rem;
+  --docs-code-bg: rgba(157, 78, 221, 0.15);
+  --docs-code-fg: #e0aaff;
+  --docs-code-border: 1px solid rgba(157, 78, 221, 0.3);
+  --docs-gh-fg: #100;
+  --docs-gh-bg: #9d4edd;
+  --docs-gh-border: 1px solid #9d4edd;
+  --docs-gh-shadow: 0 0 20px rgba(157, 78, 221, 0.35);
 }
-
 /* ════ SAGE docs — brand-matched product documentation ════ */
 
-.docs-body {
+body.docs-body {
   min-height: 100vh;
 }
 
@@ -300,7 +323,7 @@
   padding: 12px 16px;
   border-left: 3px solid var(--docs-accent);
   background: var(--docs-accent-soft);
-  color: #cfc6b6;
+  color: var(--docs-body);
   font-style: italic;
 }
 .docs-prose hr {
@@ -333,13 +356,13 @@
   vertical-align: top;
 }
 .docs-prose th {
-  border-bottom-color: #2a261c;
+  border-bottom-color: var(--docs-border);
 }
 .docs-prose td {
   color: var(--docs-body);
 }
 .docs-prose tr:hover td {
-  background: rgba(200, 151, 47, 0.03);
+  background: var(--docs-accent-soft);
 }
 .docs-prose td code {
   font-size: 12px;
@@ -513,3 +536,207 @@
   color: var(--docs-muted);
   margin-bottom: 0.75rem;
 }
+/* ── Brand shell overrides (appended per site after tokens) ── */
+
+/* Beat landing page body { background/color/font } from style.css */
+body.docs-body {
+  min-height: 100vh;
+  background: var(--docs-bg) !important;
+  color: var(--docs-fg) !important;
+  font-family: var(--docs-body-font), system-ui, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+/* Top bar */
+.docs-top {
+  background: color-mix(in srgb, var(--docs-top-bg, var(--docs-panel)) 96%, transparent) !important;
+  border-bottom: var(--docs-chrome-border, 1px solid var(--docs-border)) !important;
+  backdrop-filter: blur(12px);
+}
+.docs-brand-word {
+  font-family: var(--docs-display), system-ui, sans-serif !important;
+  color: var(--docs-accent) !important;
+  font-size: var(--docs-brand-size, 1.35rem) !important;
+  letter-spacing: var(--docs-brand-track, 0.08em) !important;
+  font-weight: var(--docs-brand-weight, 700) !important;
+  text-shadow: var(--docs-brand-shadow, none) !important;
+}
+.docs-brand-tag {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-muted) !important;
+}
+.docs-ver {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-accent-2) !important;
+  border: 1px solid var(--docs-accent-dim) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+  background: var(--docs-accent-soft);
+}
+.docs-top-link {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-muted-2) !important;
+}
+.docs-top-link:hover { color: var(--docs-accent) !important; }
+.docs-gh {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-gh-fg, var(--docs-bg)) !important;
+  background: var(--docs-gh-bg, var(--docs-accent)) !important;
+  border: var(--docs-gh-border, 1px solid var(--docs-accent)) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+  box-shadow: var(--docs-gh-shadow, none) !important;
+}
+.docs-menu-btn {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  border: 1px solid var(--docs-border) !important;
+  color: var(--docs-accent) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+}
+
+/* Sidebar — chapter cards (branded, not flat sage list) */
+.docs-aside {
+  background: var(--docs-aside-bg, var(--docs-panel)) !important;
+  border-right: var(--docs-chrome-border, 1px solid var(--docs-border)) !important;
+}
+.docs-aside-label {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-muted) !important;
+}
+.docs-nav-section {
+  margin-top: 1rem;
+  padding: var(--docs-card-pad, 0.75rem 0.65rem);
+  background: var(--docs-card-bg, transparent);
+  border: var(--docs-card-border, none);
+  border-radius: var(--docs-radius, 2px);
+  box-shadow: var(--docs-card-shadow, none);
+}
+.docs-nav-label {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-accent-2) !important;
+  letter-spacing: 0.12em;
+}
+.docs-nav-link {
+  font-family: var(--docs-nav-font, var(--docs-body-font)), system-ui, sans-serif !important;
+  color: var(--docs-muted-2) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+  border-left: 2px solid transparent !important;
+}
+.docs-nav-link:hover {
+  color: var(--docs-fg) !important;
+  background: var(--docs-accent-soft) !important;
+}
+.docs-nav-link.is-active {
+  color: var(--docs-accent) !important;
+  background: var(--docs-accent-soft) !important;
+  border-left-color: var(--docs-accent) !important;
+  font-weight: 600 !important;
+}
+.docs-aside-foot a {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-muted) !important;
+}
+.docs-aside-foot a:hover { color: var(--docs-accent) !important; }
+
+/* Prose */
+.docs-prose h1 {
+  font-family: var(--docs-display), system-ui, sans-serif !important;
+  color: var(--docs-h1, var(--docs-fg)) !important;
+  text-shadow: var(--docs-h1-shadow, none) !important;
+  letter-spacing: var(--docs-h1-track, 0.02em) !important;
+  font-weight: var(--docs-h1-weight, 700) !important;
+}
+.docs-prose h2 {
+  font-family: var(--docs-display), system-ui, sans-serif !important;
+  color: var(--docs-fg) !important;
+  border-top-color: var(--docs-border) !important;
+  font-weight: var(--docs-h2-weight, 600) !important;
+}
+.docs-prose h3 {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-accent) !important;
+}
+.docs-prose p,
+.docs-prose li {
+  font-family: var(--docs-body-font), system-ui, sans-serif !important;
+  color: var(--docs-body) !important;
+  font-size: var(--docs-prose-size, 15.5px) !important;
+  line-height: 1.7 !important;
+}
+.docs-prose a {
+  color: var(--docs-accent) !important;
+  border-bottom-color: var(--docs-accent-soft) !important;
+}
+.docs-prose a:hover {
+  border-bottom-color: var(--docs-accent) !important;
+  text-shadow: none !important;
+}
+.docs-prose blockquote {
+  border-left-color: var(--docs-accent) !important;
+  background: var(--docs-accent-soft) !important;
+  color: var(--docs-body) !important;
+  border-radius: 0 var(--docs-radius, 2px) var(--docs-radius, 2px) 0;
+}
+.docs-prose :not(pre) > code {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  background: var(--docs-code-bg, var(--docs-accent-soft)) !important;
+  color: var(--docs-code-fg, var(--docs-accent)) !important;
+  border: var(--docs-code-border, 1px solid var(--docs-border)) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+  padding: 0.1em 0.35em;
+}
+
+/* Terminal cards — match landing install/cmd surfaces */
+.docs-prose pre,
+.docs-prose .docs-pre,
+.docs-pre {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  background: var(--docs-term-bg) !important;
+  color: var(--docs-term-fg) !important;
+  border: var(--docs-term-border) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+  box-shadow: var(--docs-term-shadow, none) !important;
+  padding: var(--docs-term-pad, 14px 16px) !important;
+  overflow-x: auto;
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+}
+.docs-prose pre code,
+.docs-pre code {
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+}
+.docs-copy {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  background: var(--docs-term-bg) !important;
+  color: var(--docs-accent) !important;
+  border: 1px solid var(--docs-border) !important;
+  border-radius: var(--docs-radius, 2px) !important;
+}
+
+/* Tables */
+.docs-prose thead {
+  color: var(--docs-accent-2) !important;
+}
+.docs-prose th,
+.docs-prose td {
+  border-bottom-color: var(--docs-border) !important;
+}
+.docs-prose tr:hover td {
+  background: var(--docs-accent-soft) !important;
+}
+
+.sec-label {
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+  color: var(--docs-muted) !important;
+}
+.docs-page-foot {
+  border-top-color: var(--docs-border) !important;
+  color: var(--docs-muted) !important;
+  font-family: var(--docs-mono), ui-monospace, monospace !important;
+}
+.docs-doctrine { color: var(--docs-muted-2) !important; }
+.docs-doctrine .gold-glow,
+.docs-doctrine em { color: var(--docs-accent) !important; }
