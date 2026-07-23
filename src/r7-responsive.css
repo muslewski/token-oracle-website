@@ -66,12 +66,24 @@ section.hero,
   }
 }
 
-/* —— Video —— */
+/* —— Video (poster-under strategy) ——
+   Frame paints the still via background-image (r7-media.js).
+   Video stays transparent until first frame so load() never blanks the hero. */
+.vid-frame,
+.vid-plate,
+.bleed-vid,
+.film-band {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 video {
-  background: #0a0a0a;
+  /* transparent — frame still shows through while buffering */
+  background: transparent;
 }
 .vid-frame video,
-.vid-plate video {
+.vid-plate video,
+.bleed-vid video {
   min-height: 0 !important;
   width: 100%;
   height: auto;
@@ -81,6 +93,19 @@ video {
 .vid-frame.square video,
 .vid-plate.square video {
   aspect-ratio: 1;
+}
+/* Hide decoding black until first frame; still underneath */
+video.r7-video.is-waiting {
+  opacity: 0;
+}
+video.r7-video.is-ready {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  video.r7-video.is-waiting {
+    opacity: 1;
+  }
 }
 
 /* —— Reveal: cheap —— */

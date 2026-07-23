@@ -2,6 +2,7 @@
  * Round 7 media runtime — lightning-fast video + reduced motion.
  * - Pick mobile (sm/) source when narrow / Save-Data
  * - preload=none; play only when near viewport; pause when offscreen
+ * - Poster-under-video: paint still on the frame so load() never blanks the hero
  */
 (function () {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -32,6 +33,64 @@
     );
   }
 
+  function posterUrl(video) {
+    return (
+      video.getAttribute("poster") ||
+      video.getAttribute("data-poster") ||
+      ""
+    );
+  }
+
+  /** Frame that should hold the still (never blank under a loading video). */
+  function frameFor(video) {
+    return (
+      video.closest(".vid-frame, .vid-plate, .bleed-vid, .film-band") ||
+      video.parentElement
+    );
+  }
+
+  /**
+   * Keep a still under the <video> for the whole load window.
+   * Browsers drop the poster attribute once load() starts → black until first frame.
+   * CSS background on the frame + transparent video until ready fixes that.
+   */
+  function paintPosterUnder(video) {
+    const url = posterUrl(video);
+    if (!url) return;
+    const frame = frameFor(video);
+    if (!frame) return;
+    if (!frame.style.backgroundImage) {
+      frame.style.backgroundImage = `url("${url.replace(/"/g, "")}")`;
+    }
+    frame.style.backgroundSize = frame.style.backgroundSize || "cover";
+    frame.style.backgroundPosition =
+      frame.style.backgroundPosition || "center";
+    frame.style.backgroundRepeat = "no-repeat";
+    frame.classList.add("has-poster-bg");
+    video.classList.add("r7-video");
+    if (!reduce) video.classList.add("is-waiting");
+  }
+
+  function markReady(video) {
+    video.classList.remove("is-waiting");
+    video.classList.add("is-ready");
+  }
+
+  function preloadHeroPoster(videos) {
+    const first = videos[0];
+    if (!first) return;
+    const url = posterUrl(first);
+    if (!url) return;
+    // Avoid duplicate preloads
+    if (document.querySelector(`link[data-r7-poster="${url}"]`)) return;
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = url;
+    link.setAttribute("data-r7-poster", url);
+    document.head.appendChild(link);
+  }
+
   function armVideo(video) {
     if (video.dataset.r7Armed === "1") return;
     video.dataset.r7Armed = "1";
@@ -42,8 +101,13 @@
     video.preload = "none";
     video.removeAttribute("autoplay");
 
+    paintPosterUnder(video);
+
     const desktop = currentSrc(video);
-    if (!desktop) return;
+    if (!desktop) {
+      markReady(video);
+      return;
+    }
     const desired = useMobile ? toMobileSrc(desktop) : desktop;
 
     if (reduce) {
@@ -57,11 +121,24 @@
       }
       source.setAttribute("src", desired);
       video.removeAttribute("src");
+      markReady(video);
       return;
     }
 
     video.loop = true;
     let loaded = false;
+
+    const onFirstFrame = () => markReady(video);
+    video.addEventListener("loadeddata", onFirstFrame, { once: true });
+    video.addEventListener("playing", onFirstFrame, { once: true });
+    // If decode fails, still unhide so poster/frame remains usable via controls fallback
+    video.addEventListener(
+      "error",
+      () => {
+        markReady(video);
+      },
+      { once: true },
+    );
 
     const loadAndPlay = () => {
       if (!loaded) {
@@ -100,7 +177,9 @@
   }
 
   function boot() {
-    document.querySelectorAll("video").forEach(armVideo);
+    const videos = Array.from(document.querySelectorAll("video"));
+    preloadHeroPoster(videos);
+    videos.forEach(armVideo);
   }
 
   if (document.readyState === "loading") {
