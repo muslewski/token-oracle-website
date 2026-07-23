@@ -1,0 +1,16 @@
+{
+  "product": "token-oracle",
+  "siblingDir": "../../token-oracle",
+  "brandWord": "ORACLE",
+  "siteName": "token-oracle",
+  "siteUrl": "https://oracle.muslewski.com",
+  "githubRepo": "muslewski/token-oracle",
+  "themeColor": "#0c0718",
+  "bg": "#0c0718",
+  "fg": "#f2ebff",
+  "fontsCss": "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+  "favicon": "/favicon.ico",
+  "ogImage": "/og.jpg",
+  "footDoctrine": "Know when you'll hit the limit.",
+  "ghEditPath": "docs/"
+}

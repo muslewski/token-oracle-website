@@ -5,9 +5,16 @@
   "type": "module",
   "description": "Marketing site for token-oracle — offline token/cap forecast. Vite one-pager.",
   "scripts": {
+    "docs:build": "node scripts/build-docs.mjs",
+    "predev": "node scripts/build-docs.mjs",
+    "prebuild": "node scripts/build-docs.mjs",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/postbuild-docs.mjs",
     "preview": "vite preview"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0"
   },
   "devDependencies": {
     "vite": "^6.0.7"
