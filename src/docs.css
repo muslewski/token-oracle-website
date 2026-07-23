@@ -12,7 +12,7 @@
   --docs-accent: #9d4edd;
   --docs-accent-2: #e0aaff;
   --docs-accent-dim: #7b2cbf;
-  --docs-accent-glow: rgba(157, 78, 221, 0.4);
+  --docs-accent-glow: transparent;
   --docs-accent-soft: rgba(157, 78, 221, 0.12);
   --docs-display: "Cinzel", Georgia, serif;
   --docs-body-font: "Source Sans 3", system-ui, sans-serif;
@@ -22,15 +22,15 @@
   --docs-brand-size: 1.25rem;
   --docs-brand-track: 0.06em;
   --docs-h1: #f2ebff;
-  --docs-h1-shadow: 0 0 36px rgba(157, 78, 221, 0.3);
+  --docs-h1-shadow: none;
   --docs-prose-size: 16px;
   --docs-card-bg: #15102a;
   --docs-card-border: 1px solid rgba(157, 78, 221, 0.35);
-  --docs-card-shadow: 0 0 30px rgba(157, 78, 221, 0.12);
+  --docs-card-shadow: none;
   --docs-term-bg: #10081c;
   --docs-term-fg: #f2ebff;
   --docs-term-border: 1px solid rgba(157, 78, 221, 0.4);
-  --docs-term-shadow: 0 0 24px rgba(157, 78, 221, 0.15);
+  --docs-term-shadow: none;
   --docs-term-pad: 1rem 1.15rem;
   --docs-code-bg: rgba(157, 78, 221, 0.15);
   --docs-code-fg: #e0aaff;
@@ -38,7 +38,7 @@
   --docs-gh-fg: #100;
   --docs-gh-bg: #9d4edd;
   --docs-gh-border: 1px solid #9d4edd;
-  --docs-gh-shadow: 0 0 20px rgba(157, 78, 221, 0.35);
+  --docs-gh-shadow: none;
 }
 /* ════ SAGE docs — brand-matched product documentation ════ */
 
@@ -68,8 +68,6 @@ body.docs-body {
   top: 0;
   z-index: 100;
   background: color-mix(in srgb, var(--docs-bg) 94%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--docs-border);
 }
 .docs-top-inner {
@@ -98,7 +96,7 @@ body.docs-body {
   font-size: 24px;
   color: var(--docs-accent);
   letter-spacing: 0.12em;
-  text-shadow: 0 0 10px var(--docs-accent-glow);
+  text-shadow: none;
 }
 .docs-brand-tag {
   font-family: var(--docs-mono), ui-monospace, monospace;
@@ -262,7 +260,7 @@ body.docs-body {
   letter-spacing: 0.04em;
   line-height: 1.15;
   margin: 0 0 16px;
-  text-shadow: 0 0 28px var(--docs-accent-glow);
+  text-shadow: none;
 }
 .docs-prose h2 {
   font-family: var(--docs-body-font), system-ui, sans-serif;
@@ -303,7 +301,7 @@ body.docs-body {
 }
 .docs-prose a:hover {
   border-bottom-color: var(--docs-accent);
-  text-shadow: 0 0 12px var(--docs-accent-soft);
+  text-shadow: none;
 }
 .docs-prose ul,
 .docs-prose ol {
@@ -387,7 +385,7 @@ body.docs-body {
   padding: 16px 18px;
   margin: 1.1rem 0 1.4rem;
   overflow-x: auto;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(200, 151, 47, 0.05);
+  box-shadow: none;
 }
 .docs-prose pre code,
 .docs-prose .docs-pre code {
@@ -552,7 +550,6 @@ body.docs-body {
 .docs-top {
   background: color-mix(in srgb, var(--docs-top-bg, var(--docs-panel)) 96%, transparent) !important;
   border-bottom: var(--docs-chrome-border, 1px solid var(--docs-border)) !important;
-  backdrop-filter: blur(12px);
 }
 .docs-brand-word {
   font-family: var(--docs-display), system-ui, sans-serif !important;
@@ -560,7 +557,7 @@ body.docs-body {
   font-size: var(--docs-brand-size, 1.35rem) !important;
   letter-spacing: var(--docs-brand-track, 0.08em) !important;
   font-weight: var(--docs-brand-weight, 700) !important;
-  text-shadow: var(--docs-brand-shadow, none) !important;
+  text-shadow: none !important;
 }
 .docs-brand-tag {
   font-family: var(--docs-mono), ui-monospace, monospace !important;
@@ -641,7 +638,7 @@ body.docs-body {
 .docs-prose h1 {
   font-family: var(--docs-display), system-ui, sans-serif !important;
   color: var(--docs-h1, var(--docs-fg)) !important;
-  text-shadow: var(--docs-h1-shadow, none) !important;
+  text-shadow: none !important;
   letter-spacing: var(--docs-h1-track, 0.02em) !important;
   font-weight: var(--docs-h1-weight, 700) !important;
 }
@@ -740,3 +737,71 @@ body.docs-body {
 .docs-doctrine { color: var(--docs-muted-2) !important; }
 .docs-doctrine .gold-glow,
 .docs-doctrine em { color: var(--docs-accent) !important; }
+
+
+/* ── Oracle craft: shrine type, quiet violet edge ── */
+body.docs-body { background: #0c0718 !important; }
+.docs-top {
+  background: #0c0718 !important;
+  border-bottom: 1px solid rgba(157,78,221,0.22) !important;
+  box-shadow: none !important;
+}
+.docs-brand-word {
+  color: #f2ebff !important;
+  letter-spacing: 0.08em !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+.docs-brand-tag {
+  color: #e0aaff !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+.docs-aside {
+  background: #120c22 !important;
+  border-right: 1px solid rgba(157,78,221,0.2) !important;
+}
+.docs-aside-label {
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-size: 10px !important;
+  color: #e0aaff !important;
+}
+/* Ledger sections: soft panel, no purple fog */
+.docs-nav-section {
+  background: #15102a !important;
+  border: 1px solid rgba(157,78,221,0.28) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.docs-nav-link {
+  border-radius: 6px !important;
+  border-left: none !important;
+  padding: 0.45rem 0.6rem !important;
+}
+.docs-nav-link:hover {
+  background: rgba(157,78,221,0.1) !important;
+  color: #f2ebff !important;
+}
+.docs-nav-link.is-active {
+  background: rgba(157,78,221,0.16) !important;
+  color: #e0aaff !important;
+  border-left: none !important;
+  font-weight: 600 !important;
+}
+.docs-prose h1 {
+  text-shadow: none !important;
+  color: #f2ebff !important;
+}
+.docs-prose pre, .docs-pre {
+  box-shadow: none !important;
+  border: 1px solid rgba(157,78,221,0.32) !important;
+  border-radius: 8px !important;
+}
+.docs-gh {
+  box-shadow: none !important;
+}
+.docs-prose a:hover {
+  text-shadow: none !important;
+}

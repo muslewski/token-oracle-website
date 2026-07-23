@@ -12,5 +12,7 @@
   "favicon": "/favicon.ico",
   "ogImage": "/og.jpg",
   "footDoctrine": "Know when you'll hit the limit.",
-  "ghEditPath": "docs/"
+  "ghEditPath": "docs/",
+  "brandTag": "scry",
+  "asideLabel": "Ledger"
 }

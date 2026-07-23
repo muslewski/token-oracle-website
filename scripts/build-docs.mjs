@@ -56,6 +56,8 @@ function loadConfig() {
     ogImage: cfg.ogImage || "/og.jpg",
     footDoctrine: cfg.footDoctrine || "",
     ghEditPath: cfg.ghEditPath || "docs/",
+    brandTag: cfg.brandTag || "docs",
+    asideLabel: cfg.asideLabel || "Contents",
   };
 }
 
@@ -257,7 +259,7 @@ function pageShell({ title, description, version, sidebarHtml, bodyHtml, current
   <div class="docs-top-inner">
     <a class="docs-brand" href="/">
       <span class="docs-brand-word">${esc(CFG.brandWord)}</span>
-      <span class="docs-brand-tag">// docs</span>
+      <span class="docs-brand-tag">${esc(CFG.brandTag)}</span>
     </a>
     <div class="docs-top-actions">
       <span class="docs-ver" title="Package version documented">v${esc(version)}</span>
@@ -270,7 +272,7 @@ function pageShell({ title, description, version, sidebarHtml, bodyHtml, current
 
 <div class="docs-shell">
   <aside class="docs-aside">
-    <div class="docs-aside-label">// documentation</div>
+    <div class="docs-aside-label">${esc(CFG.asideLabel)}</div>
     ${sidebarHtml}
     <div class="docs-aside-foot">
       <a href="https://github.com/${CFG.githubRepo}/edit/main/${CFG.ghEditPath}">Edit on GitHub →</a>
